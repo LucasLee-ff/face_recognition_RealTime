@@ -87,7 +87,13 @@
 
 4. 打开该目录中的`__init__.py`文件，在第7行的末尾加上”, face_landmarks_2“，保存
 
-   <img src="C:\Users\73113\AppData\Roaming\Typora\typora-user-images\image-20201106145839314.png" alt="示例" style="zoom:150%;" />
+   示例：
+   
+   ```python
+   from .api import load_image_file, face_locations, batch_face_locations, face_landmarks, face_encodings, compare_faces, face_distance, face_landmarks_2
+   ```
+   
+   
 
 
 
