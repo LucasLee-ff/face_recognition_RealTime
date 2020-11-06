@@ -1,4 +1,4 @@
-[TOC]
+
 
 
 
@@ -10,7 +10,24 @@
 
 
 
-## 功能简述
+## 目录
+
+- #### [功能简述](#jump1)
+
+- #### [环境配置](#jump2)
+
+- #### [活体检测思路](#jump3)
+
+- #### [使用方法](#jump4)
+
+  - ##### [准备工作](#jump5)
+  - ##### [运行程序](#jump6)
+
+- #### [额外说明](#jump7)
+
+
+
+## <span id="jump1">功能简述</span>
 
 1. 找出每一帧图像中的主要人脸（即面积最大的人脸）并进行识别
 2. 以眨眼和张嘴动作进行活体判定
@@ -18,7 +35,7 @@
 
 
 
-## 环境配置
+## <span id="jump2">环境配置</span>
 
 - Python 3.3+ or Python 2.7
 
@@ -26,7 +43,7 @@
 
 
 
-## 活体检测思路
+## <span id="jump3">活体检测思路</span>
 
 - 获取人脸特征点，计算`ear`*(eye aspect ratio, 眼睛纵横比 )*和`mar`*(mouth aspect ratio, 嘴巴纵横比)*
 - 当`ear`小于一定阈值`ear_threshold`时，判定人物闭眼
@@ -39,9 +56,9 @@
 
 
 
-## 使用方法
+## <span id="jump4">使用方法</span>
 
-### 一、准备工作
+### <span id="jump5">一、准备工作</span>
 
 > `face_recognition`库中返回人脸特征点的函数`face_landmarks`返回的字典(dictionary)中将嘴巴分为了上嘴唇`“top_lip”`和 `“bottom_lip”` 两个部分。为了直接得到整个嘴巴的特征点，方便后续对嘴巴纵横比的计算，本人新定义了函数`face_landmarks_2`，函数执行内容不变，返回值在`face_landmarks`的基础上加入了键`"mouth"`，对应的值为20个嘴部特征点。
 
@@ -101,7 +118,7 @@
 
 
 
-### 二、运行程序
+### <span id="jump6">二、运行程序</span>
 
 1. 打开本项目中的`main_function.py`文件
 
@@ -118,7 +135,7 @@
 
 
 
-## 额外说明
+## <span id="jump7">额外说明</span>
 
 本项目中的`main_function.py`文件为主体，`sub_functions.py`文件包含了本人额外编写的有关活体检测等功能的函数
 
