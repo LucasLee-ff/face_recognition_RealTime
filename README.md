@@ -39,7 +39,7 @@
 
 ### 一、准备工作
 
-> `face_recognition`库中返回人脸特征点的函数`face_landmarks`返回的字典*(dictionary)*中将嘴巴分为了上嘴唇`“top_lip”`和 `“bottom_lip”` 两个部分。为了直接得到整个嘴巴的特征点，方便后续对嘴巴纵横比的计算，本人新定义了函数`face_landmarks_2`，函数执行内容不变，返回值在`face_landmarks`的基础上加入了键`"mouth"`，对应的值为20个嘴部特征点。
+> `face_recognition`库中返回人脸特征点的函数`face_landmarks`返回的字典(dictionary)中将嘴巴分为了上嘴唇`“top_lip”`和 `“bottom_lip”` 两个部分。为了直接得到整个嘴巴的特征点，方便后续对嘴巴纵横比的计算，本人新定义了函数`face_landmarks_2`，函数执行内容不变，返回值在`face_landmarks`的基础上加入了键`"mouth"`，对应的值为20个嘴部特征点。
 
 1. 复制以下代码
 
