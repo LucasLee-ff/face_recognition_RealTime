@@ -39,7 +39,7 @@
 
 - Python 3.3+ or Python 2.7
 
-请**务必**参考开源项目 *[face_recognition](https://github.com/ageitgey/face_recognition)* 中的需求
+请**务必**参考开源项目 *[face_recognition](https://github.com/ageitgey/face_recognition)* 中***Installation***栏目中的的需求，里面有不同系统安装face_recognition的具体教程
 
 
 
@@ -60,7 +60,7 @@
 
 ### <span id="jump5">一、准备工作</span>
 
-> `face_recognition`库中返回人脸特征点的函数`face_landmarks`返回的字典(dictionary)中将嘴巴分为了上嘴唇`“top_lip”`和 `“bottom_lip”` 两个部分。为了直接得到整个嘴巴的特征点，方便后续对嘴巴纵横比的计算，本人新定义了函数`face_landmarks_2`，函数执行内容不变，返回值在`face_landmarks`的基础上加入了键`"mouth"`，对应的值为20个嘴部特征点。
+> `face_recognition`库中返回人脸特征点的函数`face_landmarks`返回的字典(dictionary)中将嘴巴分为了上嘴唇`“top_lip”`和 `“bottom_lip”` 两个部分。为了直接得到整个嘴巴的特征点，方便后续对嘴巴纵横比的计算，新定义了函数`face_landmarks_2`，函数执行内容与`face_landmarks`相同，返回值在`face_landmarks`的基础上加入了键`"mouth"`，对应的值为20个嘴部特征点。
 
 1. 复制以下代码
 
@@ -128,6 +128,8 @@
    # 加载已知的人脸照片
    path = 'C:\\Users\\73113\\Desktop\\SRTP\\demo\\pictures'
    ```
+
+   > 注：加载已知人脸图片后，已知人名列表由人脸图片名自动生成
 
 3. 运行程序
 
