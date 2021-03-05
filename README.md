@@ -62,39 +62,7 @@
 
 > `face_recognition`库中返回人脸特征点的函数`face_landmarks`返回的字典(dictionary)中将嘴巴分为了上嘴唇`“top_lip”`和 `“bottom_lip”` 两个部分。为了直接得到整个嘴巴的特征点，方便后续对嘴巴纵横比的计算，新定义了函数`face_landmarks_2`，函数执行内容与`face_landmarks`相同，返回值在`face_landmarks`的基础上加入了键`"mouth"`，对应的值为20个嘴部特征点。
 
-1. 复制以下代码
-
-   ```python
-   def face_landmarks_2(face_image, face_locations=None, model="large"):
-       
-       landmarks = _raw_face_landmarks(face_image, face_locations, model)
-       landmarks_as_tuples = [[(p.x, p.y) for p in landmark.parts()] for landmark in landmarks]
-   
-       # For a definition of each point index, see https://cdn-images-1.medium.com/max/1600/1*AbEg31EgkbXSQehuNJBlWg.png
-       if model == 'large':
-           return [{
-               "chin": points[0:17],
-               "left_eyebrow": points[17:22],
-               "right_eyebrow": points[22:27],
-               "nose_bridge": points[27:31],
-               "nose_tip": points[31:36],
-               "left_eye": points[36:42],
-               "right_eye": points[42:48],
-               "top_lip": points[48:55] + [points[64]] + [points[63]] + [points[62]] + [points[61]] + [points[60]],
-               "bottom_lip": points[54:60] + [points[48]] + [points[60]] + [points[67]] + [points[66]] + [points[65]] + [points[64]],
-               "mouth": points[48:68] # 此行为新增的内容
-           } for points in landmarks_as_tuples]
-       elif model == 'small':
-           return [{
-               "nose_tip": [points[4]],
-               "left_eye": points[2:4],
-               "right_eye": points[0:2],
-           } for points in landmarks_as_tuples]
-       else:
-           raise ValueError("Invalid landmarks model type. Supported models are ['small', 'large'].")
-   ```
-
-   
+1. 复制本项目中`face_landmarks_2.py`文件中的所有代码
 
 2. 在本机的python安装目录中找到`face_recognition`库的安装目录 
 
@@ -106,7 +74,7 @@
 
    
 
-4. 打开该目录中的`__init__.py`文件，在第7行的末尾加上”, face_landmarks_2“，保存
+4. 打开该目录中的`__init__.py`文件，在`from .api import`的末尾加上”, face_landmarks_2“，保存
 
    示例：
    
@@ -122,7 +90,7 @@
 
 1. 打开本项目中的`main_function.py`文件
 
-2. 找到该行代码，将路径改为本机上存有人脸照片的文件夹路径
+2. 找到该行代码，将路径改为本机上存有人脸照片的**文件夹**路径
 
    ```python
    # 加载已知的人脸照片
@@ -139,5 +107,5 @@
 
 ## <span id="jump7">额外说明</span>
 
-本项目中的`main_function.py`文件为主体，`sub_functions.py`文件包含了本人额外编写的有关活体检测等功能的函数
+本项目中`main_function.py`文件为主体，`sub_functions.py`文件包含了额外编写的有关活体检测等功能的函数
 
