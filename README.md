@@ -99,7 +99,7 @@
 
    文件夹内容如下：
 
-   ![屏幕截图 2021-03-06 173547](C:\Users\windows\Desktop\屏幕截图 2021-03-06 173547.jpg)
+   ![Image text](https://github.com/LucasLee-ff/face_recognition_RealTime/tree/master/img_show/example.jpg)
 
    > 注：加载已知人脸图片后，已知人名列表由人脸图片名自动生成
 
