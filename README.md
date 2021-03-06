@@ -93,9 +93,13 @@
 2. 找到该行代码，将路径改为本机上存有人脸照片的**文件夹**路径
 
    ```python
-   # 加载已知的人脸照片
-   path = 'C:\\Users\\73113\\Desktop\\SRTP\\demo\\pictures'
+   # 例：
+   path = 'C:\\Users\\windows\\Desktop\\SRTP_FILE\\demo\\pictures'
    ```
+
+   文件夹内容如下：
+
+   ![屏幕截图 2021-03-06 173547](C:\Users\windows\Desktop\屏幕截图 2021-03-06 173547.jpg)
 
    > 注：加载已知人脸图片后，已知人名列表由人脸图片名自动生成
 
