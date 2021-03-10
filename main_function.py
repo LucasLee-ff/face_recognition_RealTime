@@ -1,16 +1,16 @@
-import face_recognition
+import face_recognition as fr
 import cv2
 import sub_functions
 
 
 ear_threshold = 0.25
-mar_threshold = 0.75
+mar_threshold = 0.65
 
 # 加载已知人脸的照片
-path = 'C:\\Users\\73113\\Desktop\\SRTP\\demo\\pictures'
+img_path = 'C:\\Users\\windows\\Desktop\\SRTP_FILE\\demo\\pictures'
 
 # 编码文件夹下所有照片中的人脸，人名默认为每张照片的名字，返回值作为人脸识别的参照组
-known_faces_encodings, known_faces_names = sub_functions.load_known_persons(path)
+known_faces_encodings, known_faces_names = sub_functions.load_known_persons(img_path)
 
 
 def main():
@@ -34,7 +34,7 @@ def main():
         ret, frame = video_capture.read(0)
         rgb_frame = frame[:, :, ::-1]
 
-        face_locations = face_recognition.face_locations(rgb_frame)
+        face_locations = fr.face_locations(rgb_frame)
 
         # 若摄像头中检测不到人脸则跳过此次循环
         if len(face_locations) == 0:
@@ -49,11 +49,11 @@ def main():
         left = main_face_location[0][3]
 
         # 获取主要人脸的特征点
-        main_face_landmarks = face_recognition.face_landmarks_2(rgb_frame, main_face_location)
+        main_face_landmarks = fr.face_landmarks_2(rgb_frame, main_face_location)
 
         # -----------------------人脸识别-----------------------
         # index为已知编码列表中与视频人脸编码相匹配的已知编码的下标
-        main_face_encoding = face_recognition.face_encodings(rgb_frame, main_face_location)
+        main_face_encoding = fr.face_encodings(rgb_frame, main_face_location)
         index = sub_functions.recognition(known_faces_encodings, main_face_encoding)
         if index is not None:
             name = known_faces_names[index]
@@ -62,7 +62,7 @@ def main():
 
         # 把本帧中检测到的脸与上一帧的脸作对比，如果与上一帧中不是同一个人，重新认定为假人
         if not first_loop:
-            match_last_face = face_recognition.compare_faces(face_encoding_backup, main_face_encoding[0])
+            match_last_face = fr.compare_faces(face_encoding_backup, main_face_encoding[0])
             if not match_last_face[0]:
                 count_eye = 0
                 total_blinks = 0
@@ -124,6 +124,7 @@ def main():
 
         key = cv2.waitKey(1) & 0xFF
         if key == ord("q"):
+            video_capture.release()
             break
 
 
